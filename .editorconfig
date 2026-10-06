@@ -1,0 +1,39 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{cs,csx}]
+# Formatting
+csharp_indent_braces = false
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_space_after_cast = false
+
+# Code style & Modern C#
+csharp_prefer_braces = true:warning
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+dotnet_style_null_propagation = true:warning
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
+
+# Naming conventions
+dotnet_naming_rule.interface_should_be_prefixed_with_i.severity = warning
+dotnet_naming_rule.interface_should_be_prefixed_with_i.symbols = interface_symbols
+dotnet_naming_rule.interface_should_be_prefixed_with_i.style = prefix_i
+
+dotnet_naming_symbols.interface_symbols.applicable_kinds = interface
+dotnet_naming_style.prefix_i.required_prefix = I
+dotnet_naming_style.prefix_i.capitalization = pascal_case
+
+[*.{json,yml,yaml,md}]
+indent_size = 2

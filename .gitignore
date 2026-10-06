@@ -1,0 +1,45 @@
+## Ignore Visual Studio / .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+
+## Dotnet build artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Aspire
+_AppHost/
+aspire-manifest.json
+
+## Secrets & Local Config
+appsettings*.Development.json
+!appsettings.Development.json.example
+*.local.json
+.env
+.env.local
+.env.*.local
+
+## Node & Frontend
+node_modules/
+.pnpm-store/
+dist/
+build/
+.expo/
+.next/
+web-build/
+*.tsbuildinfo
+
+## OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
