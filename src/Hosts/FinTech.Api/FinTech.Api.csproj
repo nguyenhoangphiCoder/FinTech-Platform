@@ -6,6 +6,11 @@
     <ProjectReference Include="..\..\Modules\Ledger\FinTech.Modules.Ledger.Infrastructure\FinTech.Modules.Ledger.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.17.13" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
