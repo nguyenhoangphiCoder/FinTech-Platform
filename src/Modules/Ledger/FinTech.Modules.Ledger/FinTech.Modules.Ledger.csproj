@@ -1,7 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\FinTech.SharedKernel\FinTech.SharedKernel.csproj" />
+    <ProjectReference Include="..\FinTech.Modules.Ledger.Contracts\FinTech.Modules.Ledger.Contracts.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

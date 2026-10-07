@@ -1,13 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BuildingBlocks\FinTech.BuildingBlocks.Web\FinTech.BuildingBlocks.Web.csproj" />
-    <ProjectReference Include="..\..\Modules\Ledger\FinTech.Modules.Ledger.Presentation\FinTech.Modules.Ledger.Presentation.csproj" />
-    <ProjectReference Include="..\..\Modules\Ledger\FinTech.Modules.Ledger.Infrastructure\FinTech.Modules.Ledger.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\FinTech.SharedKernel\FinTech.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\Modules\Ledger\FinTech.Modules.Ledger\FinTech.Modules.Ledger.csproj" />
+    <ProjectReference Include="..\..\Modules\Ledger\FinTech.Modules.Ledger.Contracts\FinTech.Modules.Ledger.Contracts.csproj" />
+    <ProjectReference Include="..\..\Modules\Identity\FinTech.Modules.Identity\FinTech.Modules.Identity.csproj" />
+    <ProjectReference Include="..\..\Modules\Identity\FinTech.Modules.Identity.Contracts\FinTech.Modules.Identity.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Scalar.AspNetCore" Version="2.17.13" />
   </ItemGroup>
 

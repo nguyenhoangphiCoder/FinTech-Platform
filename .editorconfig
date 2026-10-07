@@ -37,3 +37,9 @@ dotnet_naming_style.prefix_i.capitalization = pascal_case
 
 [*.{json,yml,yaml,md}]
 indent_size = 2
+
+[**/Migrations/**]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.CA1861.severity = none
+dotnet_diagnostic.IDE0161.severity = none

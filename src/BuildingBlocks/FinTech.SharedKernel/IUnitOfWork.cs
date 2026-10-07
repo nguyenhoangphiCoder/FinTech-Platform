@@ -1,4 +1,4 @@
-namespace FinTech.BuildingBlocks.Application;
+namespace FinTech.SharedKernel;
 
 public interface IUnitOfWork
 {

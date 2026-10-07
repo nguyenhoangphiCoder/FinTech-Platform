@@ -1,3 +1,4 @@
+using System.Reflection;
 using NetArchTest.Rules;
 using Xunit;
 
@@ -5,12 +6,18 @@ namespace FinTech.ArchitectureTests;
 
 public class CleanArchitectureTests
 {
+    private static readonly Assembly LedgerAssembly =
+        typeof(FinTech.Modules.Ledger.Domain.LedgerAccountId).Assembly;
+
+    private static readonly Assembly SharedKernelAssembly =
+        typeof(FinTech.SharedKernel.IUnitOfWork).Assembly;
+
     [Fact]
     public void Domain_ShouldNot_DependOn_Infrastructure()
     {
-        var domainAssembly = typeof(FinTech.Modules.Ledger.Domain.LedgerAccountId).Assembly;
-
-        var result = Types.InAssembly(domainAssembly)
+        var result = Types.InAssembly(LedgerAssembly)
+            .That()
+            .ResideInNamespace("FinTech.Modules.Ledger.Domain")
             .ShouldNot()
             .HaveDependencyOn("FinTech.Modules.Ledger.Infrastructure")
             .GetResult();
@@ -21,9 +28,9 @@ public class CleanArchitectureTests
     [Fact]
     public void Domain_ShouldNot_DependOn_Application()
     {
-        var domainAssembly = typeof(FinTech.Modules.Ledger.Domain.LedgerAccountId).Assembly;
-
-        var result = Types.InAssembly(domainAssembly)
+        var result = Types.InAssembly(LedgerAssembly)
+            .That()
+            .ResideInNamespace("FinTech.Modules.Ledger.Domain")
             .ShouldNot()
             .HaveDependencyOn("FinTech.Modules.Ledger.Application")
             .GetResult();
@@ -32,13 +39,11 @@ public class CleanArchitectureTests
     }
 
     [Fact]
-    public void Application_ShouldNot_DependOn_Infrastructure()
+    public void SharedKernel_ShouldNot_DependOn_Modules()
     {
-        var appAssembly = typeof(FinTech.BuildingBlocks.Application.IUnitOfWork).Assembly;
-
-        var result = Types.InAssembly(appAssembly)
+        var result = Types.InAssembly(SharedKernelAssembly)
             .ShouldNot()
-            .HaveDependencyOn("FinTech.BuildingBlocks.Infrastructure")
+            .HaveDependencyOn("FinTech.Modules")
             .GetResult();
 
         Assert.True(result.IsSuccessful);

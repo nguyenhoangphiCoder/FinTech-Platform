@@ -1,3 +1,5 @@
+using FinTech.Modules.Identity;
+using FinTech.Modules.Ledger;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,9 +19,17 @@ builder.Services.AddOpenApi(options =>
     });
 });
 
+// Register Modules
+builder.Services.AddIdentityModule(builder.Configuration);
+builder.Services.AddLedgerModule(builder.Configuration);
+
 var app = builder.Build();
 
 app.UseExceptionHandler();
+
+// Map Module Endpoints
+app.MapIdentityEndpoints();
+app.MapLedgerEndpoints();
 
 // Kích hoạt OpenAPI & Scalar API Reference Documentation (giao diện thế hệ mới thay thế Swagger)
 if (app.Environment.IsDevelopment())

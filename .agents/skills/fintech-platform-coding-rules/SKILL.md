@@ -64,15 +64,17 @@ Tài liệu này quy định các **nguyên tắc bất khả xâm phạm**, **c
 
 ## 2. QUY CHUẨN KIẾN TRÚC & TỔ CHỨC CODE (CLEAN ARCHITECTURE)
 
-### 2.1 Cấu trúc 4 Tầng của Mỗi Module
-Mỗi module (Ledger, Accounts, Transactions, v.v.) tuân thủ nghiêm ngặt mô hình Clean Architecture:
+### 2.1 Cấu trúc Chuẩn của Mỗi Module (Pragmatic Modular Monolith)
+Mỗi module (Ledger, Accounts, Transactions, v.v.) tuân thủ mô hình Clean Architecture tinh gọn gồm **2 Project C#**:
 ```
-FinTech.Modules.<ModuleName>/
-├── Domain/           # Thực thể (Entities), Value Objects, Domain Events, Enums, Exceptions
-├── Application/      # Commands, Queries, Handlers, Validators, DTOs, Repository Interfaces
-├── Infrastructure/   # EF Core DbContext, Dapper Repositories, Migrations, External Adapters
-├── Presentation/     # Minimal API Endpoints (IEndpoint interface)
-└── Contracts/        # Integration Events công khai & Service Contracts (Module khác phụ thuộc vào đây)
+src/Modules/<ModuleName>/
+├── FinTech.Modules.<ModuleName>/           # Project C# chính của module
+│   ├── Domain/                            # Thực thể (Entities), Value Objects, Domain Events, Enums, Exceptions
+│   ├── Application/                       # Commands, Queries, Handlers, Validators, DTOs, Repository Interfaces
+│   ├── Infrastructure/                    # EF Core DbContext, Dapper Repositories, Migrations, External Adapters
+│   ├── Endpoints/                         # Minimal API Endpoints (MapEndpoints)
+│   └── <ModuleName>ModuleExtensions.cs    # DI Registration (AddModule) & Endpoint Mapping (MapEndpoints)
+└── FinTech.Modules.<ModuleName>.Contracts/ # Project C# chứa Public Integration Events, Interfaces & DTOs
 ```
 
 ### 2.2 Quy tắc Phụ thuộc (Dependencies Rule)

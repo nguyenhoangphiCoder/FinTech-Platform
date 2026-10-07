@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -21,9 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\BuildingBlocks\FinTech.SharedKernel\FinTech.SharedKernel.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Ledger\FinTech.Modules.Ledger.Domain\FinTech.Modules.Ledger.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Ledger\FinTech.Modules.Ledger.Application\FinTech.Modules.Ledger.Application.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Ledger\FinTech.Modules.Ledger.Infrastructure\FinTech.Modules.Ledger.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Ledger\FinTech.Modules.Ledger\FinTech.Modules.Ledger.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Ledger\FinTech.Modules.Ledger.Contracts\FinTech.Modules.Ledger.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
